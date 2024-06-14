@@ -19,13 +19,20 @@ class Order(models.Model):
                     (ORDER_REJECTED,"ORDER_REJECTED")
                     )
     order_status=models.IntegerField(choices=STATUS_CHOICES,default=CART_STAGE)
+    total_price=models.FloatField(default=0)
     owner=models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, related_name='orders')
     delete_status=models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return "order_{}_{}".format(self.id,self.owner.name)
 
 # model for ordered item
 class OrderdItem(models.Model):
     product=models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name='added_carts')
     quantity=models.IntegerField(default=1)
     owner=models.ForeignKey(Order, on_delete=models.CASCADE, related_name='added_items')
+    
+    # def __str__(self) -> str:
+    #     return "ordereditem_{}_{}_".format(self.id,self.product.title)
