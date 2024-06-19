@@ -84,6 +84,7 @@ def checkout_cart(request):
 
 # orders view page
 
+@login_required(login_url='account')
 def view_orders(request):
     user=request.user  # which user is ..
     customer=user.customer_profile # reverse relationship of Customer
