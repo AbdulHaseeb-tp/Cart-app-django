@@ -62,7 +62,7 @@ def checkout_cart(request):
             customer=user.customer_profile # reverse relationship of Customer 
             total=float(request.POST.get('total'))
 
-            order_obj=Order.objects.create(
+            order_obj=Order.objects.get(
                 owner=customer,
                 order_status=Order.CART_STAGE
             )
