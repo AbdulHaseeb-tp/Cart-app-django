@@ -26,7 +26,7 @@ class Order(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return "order_{}_{}".format(self.id,self.owner.name)
+        return "order_{}_{}".format(self.id,self.owner)
 
 # model for ordered item
 class OrderdItem(models.Model):

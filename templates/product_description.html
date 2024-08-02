@@ -36,7 +36,7 @@
             <form method="post" action="{% url 'add_to_cart' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="product_id" value="{{ product.id }}">    
-            <input type="number" name="quantity" value="1">
+            <input type="number" name="quantity" min="1" max="3" value="1">
             <button type="submit" class="btn">Add To Cart</button>
             </form>   
             <h3>Product Details <i class="fa fa-indent"></i></h3>
